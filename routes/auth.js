@@ -20,7 +20,7 @@ router.post(
         check( 'password', 'El password debe ser de 6 caractéres').isLength({ min: 6 }),
         validarCampos
     ],
-    crearUsuario);
+    crearUsuario );
 
 
 router.post(
