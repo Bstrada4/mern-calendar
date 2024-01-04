@@ -27,10 +27,14 @@ const crearUsuario = async(req, res = response ) => {
 
         await user.save();
 
+        // Generar JWT
+        const token = await generarJWT( user.id, user.name );
+
         res.status(201).json({
             ok: true,
             uid: user.id,
             name: user.name,
+            token
         });
         
     } catch (error) {
@@ -99,12 +103,13 @@ const revalidarToken = async( req, res = express.response ) => {
     const { uid, name } = req;
 
     // Generar nuevo token
-    const newToken = await generarJWT( uid, name );
+    const token = await generarJWT( uid, name );
     
 
     res.json({
         ok: true,
-        newToken
+        uid, name,
+        token
     });
 }
 
