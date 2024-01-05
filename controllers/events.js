@@ -125,15 +125,7 @@ const eliminarEventos = async( req, res = response ) => {
 
         await Evento.findByIdAndDelete( eventoId );
 
-        res.json({ ok: true });
-
-
-
-        res.status(500).json({
-            ok: false,
-            msg: 'Eliminar eventos.'
-        });
-        
+        res.json({ ok: true });        
     } catch (error) {
         console.log( error );
         res.status(500).json({
@@ -141,11 +133,6 @@ const eliminarEventos = async( req, res = response ) => {
             msg: 'No se pudo eliminar el evento.'
         });
     }
-    
-        
-    
-        
-    
 }
 
 module.exports = {
